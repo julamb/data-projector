@@ -1616,7 +1616,10 @@ Storage = (function(_super) {
     var file;
     this.datafile = datafile;
     file = this.datafile + "?" + String(Math.round(Math.random() * 99999));
-    return $.getJSON(file, this.onJSON);
+    that = this;
+    setTimeout(function() { that.onJSON(data); }, 1000);
+    return data;
+    //return $.getJSON(file, this.onJSON);
   };
 
   Storage.prototype.saveImage = function(base64Image) {
